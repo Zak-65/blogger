@@ -18,9 +18,9 @@
                 <h2 class="text-grey text-sm mb-2 dark:text-gray-400">Create Profile</h2>
                 <form method="POST" action="">
                     <!-- Cover Image -->
-                    <div class="w-full rounded-sm mb-2 bg-[url('https://images.unsplash.com/photo-1449844908441-8829872d2607?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw2fHxob21lfGVufDB8MHx8fDE3MTA0MDE1NDZ8MA&ixlib=rb-4.0.3&q=80&w=1080')] bg-cover bg-center bg-no-repeat items-center">
+                    <div class="w-full rounded-sm mb-2 bg-[url('/views/assets/profile/covertureParDefaut.jpg')] bg-cover bg-center bg-no-repeat items-center">
                         <!-- Profile Image -->
-                        <div class="mx-auto flex justify-center w-[120px] h-[120px] bg-blue-300/20 rounded-full bg-[url('https://images.unsplash.com/photo-1438761681033-6461ffad8d80?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw4fHxwcm9maWxlfGVufDB8MHx8fDE3MTEwMDM0MjN8MA&ixlib=rb-4.0.3&q=80&w=1080')] bg-cover bg-center bg-no-repeat mb-2">
+                        <div class="mx-auto flex justify-center w-[120px] h-[120px] bg-blue-300/20 rounded-full bg-[url('/views/assets/profile/profileParDefaut.jpg')] bg-cover bg-center bg-no-repeat mb-2">
                             <div class="bg-white/90 rounded-full w-5 h-5 text-center ml-24 mt-4">
                                 <input type="file" name="photoP" id="upload_profile" hidden >
                                 <label for="upload_profile">

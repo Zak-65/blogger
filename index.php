@@ -6,7 +6,11 @@ $routers = [
 
     '/signIn' => 'controllers/singIn.php',
     
-    '/logIn' => 'controllers/logIn.php'
+    '/logIn' => 'controllers/logIn.php' ,
+
+    '/dashboard' => 'controllers/dashboard.php',
+
+    '/signOut' => 'controllers/signOut.php'
 ];
 
 if(array_key_exists($uri,$routers)){

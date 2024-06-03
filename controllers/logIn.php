@@ -18,8 +18,7 @@
                 $_SESSION['photoC'] = $user['photoC'];
                 $_SESSION['sexe'] = $user['sexe'];
                 $_SESSION['email'] = $user['email'];
-                echo '<br/>';
-                var_dump($_SESSION);
+                header('location: /dashboard');
                 die();
             }else{
                 $errorMessage = 'Verifier votre mot de passe ou votre email';

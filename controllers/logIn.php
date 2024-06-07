@@ -2,14 +2,13 @@
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
         if(!empty($_POST['email']) && !empty($_POST['password'])){
             require './db/db.php';
-            $db->exec('USE blogger');
+            $db = new Database ;
             $query = 'SELECT * FROM utilisateur WHERE email = :email AND pswd = :pswd';
-            $statment = $db->prepare($query);
-            $statment->execute([
-                ':email' => $_POST['email'],
-                ':pswd' => $_POST['password']
-            ]);
-            $user = $statment->fetch(PDO::FETCH_ASSOC);
+            $db->query($query);
+            $db -> bind(":email",$_POST['email']);
+            $db -> bind(":pswd",$_POST['password']);
+            $db->execute();
+            $user = $db -> single();
             if(!empty($user)){
                 session_start();
                 $_SESSION['id'] = $user['idU'];

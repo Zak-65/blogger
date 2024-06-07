@@ -16,13 +16,13 @@
                     Profile
                 </h1>
                 <h2 class="text-grey text-sm mb-2 dark:text-gray-400">Create Profile</h2>
-                <form method="POST" action="">
+                <form method="POST" onsubmit="verifierF(event)" action="." enctype="multipart/form-data">
                     <!-- Cover Image -->
                     <div class="w-full rounded-sm mb-2 bg-[url('/views/assets/profile/covertureParDefaut.jpg')] bg-cover bg-center bg-no-repeat items-center">
                         <!-- Profile Image -->
                         <div class="mx-auto flex justify-center w-[120px] h-[120px] bg-blue-300/20 rounded-full bg-[url('/views/assets/profile/profileParDefaut.jpg')] bg-cover bg-center bg-no-repeat mb-2">
                             <div class="bg-white/90 rounded-full w-5 h-5 text-center ml-24 mt-4">
-                                <input type="file" name="photoP" id="upload_profile" hidden >
+                                <input type="file" accept="image/*" name="photoP" id="upload_profile" hidden >
                                 <label for="upload_profile">
                                     <svg data-slot="icon" class="w-5 h-5 text-blue-700" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 0 1 5.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 0 0-1.134-.175 2.31 2.31 0 0 1-1.64-1.055l-.822-1.316a2.192 2.192 0 0 0-1.736-1.039 48.774 48.774 0 0 0-5.232 0 2.192 2.192 0 0 0-1.736 1.039l-.821 1.316Z"></path>
@@ -32,7 +32,7 @@
                             </div>
                         </div>
                         <div class="flex justify-end mb-2">
-                            <input type="file" name="photoC" id="upload_cover" hidden>
+                            <input type="file" accept="image/*" name="photoC" id="upload_cover" hidden>
                             <div class="bg-white flex items-center gap-1 rounded-tl-md px-2 text-center font-semibold">
                                 <label for="upload_cover" class="inline-flex items-center gap-1 cursor-pointer">Cover
                                     <svg data-slot="icon" class="w-5 h-5 text-blue-700" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -47,21 +47,21 @@
                     <div class="flex lg:flex-row md:flex-col sm:flex-col xs:flex-col gap-2 justify-center w-full">
                         <div class="w-full mb-2">
                             <label for="" class="mb-2 dark:text-gray-300">Your Name</label>
-                            <input name="name" type="text" class="mt-2 p-3 w-full border-2 rounded-lg dark:text-gray-200 dark:border-gray-600 dark:bg-gray-800" placeholder="Your Name">
+                            <input id="nom" name="name" type="text" class="mt-2 p-3 w-full border-2 rounded-lg dark:text-gray-200 dark:border-gray-600 dark:bg-gray-800" placeholder="Your Name">
                         </div>
                         <div class="w-full mb-2">
                             <label for="" class="dark:text-gray-300">Email</label>
-                            <input name="email" type="email" class="mt-2 p-3 w-full border-2 rounded-lg dark:text-gray-200 dark:border-gray-600 dark:bg-gray-800" placeholder="email">
+                            <input id="email" name="email" type="email" class="mt-2 p-3 w-full border-2 rounded-lg dark:text-gray-200 dark:border-gray-600 dark:bg-gray-800" placeholder="email">
                         </div>
                     </div>
                     <div class="flex lg:flex-row md:flex-col sm:flex-col xs:flex-col gap-2 justify-center w-full mb-2">
                       <div class="w-full">
                             <h3 class="dark:text-gray-300 mb-2">Password</h3>
-                            <input name="password" type="password" class="text-grey p-3 w-full border-2 rounded-lg dark:text-gray-200 dark:border-gray-600 dark:bg-gray-800">
+                            <input id="password" name="password" type="password" class="text-grey p-3 w-full border-2 rounded-lg dark:text-gray-200 dark:border-gray-600 dark:bg-gray-800">
                         </div>
                         <div class="w-full">
                             <h3 class="dark:text-gray-300 mb-2">Sex</h3>
-                            <select name="sex" class="w-full text-grey border-2 rounded-lg p-3 pl-2 pr-2 dark:text-gray-200 dark:border-gray-600 dark:bg-gray-800">
+                            <select id="sexe" name="sex" class="w-full text-grey border-2 rounded-lg p-3 pl-2 pr-2 dark:text-gray-200 dark:border-gray-600 dark:bg-gray-800">
                                 <option disabled value="">Select Sex</option>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
@@ -69,6 +69,7 @@
                         </div>
                         
                     </div>
+                    <p id="errorMessage" class='text-red-500 hidden'>Remplire tous les champs</p>
                     <?php if(!empty($errorMessage)){
                       echo "<p class='text-red-500'> $errorMessage </p>";
                     }?>
@@ -80,3 +81,4 @@
         </div>
     </div>
 </section>
+<script src="../../script/newUtilisateur.js" ></script>

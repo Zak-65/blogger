@@ -10,11 +10,14 @@ $routers = [
 
     '/dashboard' => 'controllers/dashboard.php',
 
-    '/signOut' => 'controllers/signOut.php'
+    '/signOut' => 'controllers/signOut.php' ,
+
+    '/accueille' => 'controllers/accueille.php' 
+
 ];
 
 if(array_key_exists($uri,$routers)){
-
+    
     require $routers[$uri];
 
 }else{

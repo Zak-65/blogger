@@ -8,7 +8,24 @@
         $db -> bind(":id",$_SESSION['id']);
         $db -> execute();
         $blogs = $db -> resultSet();
-        require './views/dashboard.view.php';
+        $uri =parse_url($_SERVER['REQUEST_URI'])['path'];
+        $routers = [
+            '/dashboard' => './views/dashboard.view.php',
+        
+            '/accueille' => './views/accueille.view.php'
+        
+        
+        ];
+        
+        if(array_key_exists($uri,$routers)){
+        
+            require $routers[$uri];
+        
+        }else{
+            http_response_code(404);
+            require 'controllers/404.php';
+            die();
+        }
     }else{
         header('location: /');
     }

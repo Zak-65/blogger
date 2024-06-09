@@ -1,9 +1,9 @@
 <?php require './views/partials/head.php' ?>
-<nav class="relative rounded w-[99%] m-auto flex items-center justify-between sm:h-10 md:justify-center  bg-cyan-700 mb-2  py-6 px-4 ">
+<nav class="relative rounded w-[99%] m-auto flex items-center justify-between sm:h-10 md:justify-center  bg-cyan-600 mb-2  py-6 px-4 ">
     <div class="flex items-center flex-1 md:absolute md:inset-y-0 md:left-0">
         <div class="flex items-center justify-between w-full md:w-auto ml-2">
-            <a href="" aria-label="Home">
-                <img src="https://www.svgrepo.com/show/491978/gas-costs.svg" height="40" width="40" />
+            <a href="/accueille" class="font-serif text-xl text-white">
+             BlogSpace
             </a>
             <div class="-mr-2 flex items-center md:hidden">
                 <button type="button" id="main-menu" aria-label="Main menu" aria-haspopup="true" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
@@ -12,33 +12,27 @@
             </div>
         </div>
     </div>
-    <div class="hidden md:flex md:space-x-10">
-        <a href="#features"
-            class="font-medium underline text-white hover:text-gray-900 transition duration-150 ease-in-out">Profile</a>
-        <a href="/blog"
-            class="font-medium text-white hover:text-gray-900 transition duration-150 ease-in-out">Blog</a>
-    </div>
-    <div class="hidden md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0">
+    <div class="hidden md:absolute  m-2 rounded md:flex md:items-center md:justify-end md:inset-y-0 md:right-0">
         <span class="inline-flex">
-            <a href="/signOut" class="inline-flex items-center px-4 py-2 border border-transparent text-base leading-6 font-medium text-red-600 hover:text-red-500 focus:outline-none transition duration-150 ease-in-out">
-              Sign Out
+            <a href="/signOut" class="inline-flex items-center px-4 py-2 border border-transparent text-base leading-6 font-medium text-red-600 text-lg hover:text-black focus:outline-none transition duration-150 ease-in-out">
+              <i class="fa-solid fa-right-from-bracket ml-3 "></i>
             </a>
         </span>
     </div>
 </nav>
-<div>
+<div class="relative">
     <!-- part profile -->
 <section class="dark:bg-gray-900 flex overflow-hidden h-[90vh] ">
     <div class="mx-auto h-[86vh] shadow-2xl shadow-black w-[35%] ml-3 ">
         <!-- User Cover IMAGE -->
         <div class="relative">
         <a href=""><i class="fa-solid fa-pen absolute text-white text-xl m-3"></i></a>
-            <img src="https://images.unsplash.com/photo-1560697529-7236591c0066?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwxMHx8Y292ZXJ8ZW58MHwwfHx8MTcxMDQ4MTEwNnww&ixlib=rb-4.0.3&q=80&w=1080" alt="User Cover"
+            <img src= <?= htmlspecialchars($_SESSION['photoC']) ?> alt="Photo couverture"
                     class="w-full xl:h-[10rem] lg:h-[22rem] md:h-[16rem] sm:h-[13rem] xs:h-[9.5rem]" />
         </div>
         <!-- User Profile Image -->
         <div class="w-full mx-auto flex justify-center">
-            <img src="https://images.unsplash.com/photo-1463453091185-61582044d556?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwxMnx8cGVvcGxlfGVufDB8MHx8fDE3MTA0ODExOTN8MA&ixlib=rb-4.0.3&q=80&w=1080" alt="User Profile"
+            <img src= <?= htmlspecialchars($_SESSION['photoP']) ?> alt="Photo Profile"
                     class="rounded-full object-cover xl:w-[10rem] xl:h-[10rem] lg:w-[16rem] lg:h-[16rem] md:w-[12rem] md:h-[12rem] sm:w-[10rem] sm:h-[10rem] xs:w-[8rem] xs:h-[8rem] outline outline-2 outline-offset-2 outline-yellow-500 shadow-xl relative xl:bottom-[7rem] lg:bottom-[8rem] md:bottom-[6rem] sm:bottom-[5rem] xs:bottom-[4.3rem]" />
         </div>
 
@@ -158,24 +152,33 @@
                </form>
             <!-- post 1 -->
             <?php foreach($blogs as $blog) :?>
-                <article class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 dark:bg-gray-700 px-8 py-8 pb-8 pt-80 sm:pt-48 lg:pt-30 w-[90%] article">
+                <article id='value=<?= $blog['idBlog']?> ' class="relative isolate flex flex-col justify-end overflow-hidden rounded bg-gray-900 dark:bg-gray-700 px-8 py-8 pb-8 pt-80 sm:pt-48 lg:pt-30 w-[90%] article">
                     <input type="hidden" value=<?= $blog['idBlog'] ?>  />
+                    <input type="hidden" value=<?= $blog['idU'] ?>  />
+                    <?php if($blog['idU'] == $_SESSION['id']){
+                        echo "<a onclick = deleteBlog(event) href='#' class='z-20 block h-16 w-16 text-gray-600 '>
+                            <i class='fa-regular absolute top-4 right-5 fa-trash-can text-white text-xl '></i>
+                            </a>";
+                        echo "<a href='#' class='z-20 block h-16 w-16 text-gray-600 '>
+                        <i class='fa-solid absolute top-4 right-14 fa-pen text-white text-xl '></i>
+                        </a>";
+                    } ?>
                     <img src= <?= htmlspecialchars($blog['photoBlog']) ?>   alt="" class="absolute inset-0 -z-10 h-full w-full object-cover">
                     <div class="absolute inset-0 -z-10 bg-gradient-to-t from-gray-900 via-gray-900/40"></div>
                     <div class="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-gray-900/10"></div>
                     <!-- part date -->
                     <div class="flex mt-6 justify-between w-[44%] text-white text-sm " >
-                     <p>Cree par :<?= $_SESSION['nom'] ?></p>
+                     <p>Cree par : <?= $_SESSION['nom'] ?></p>
                      <p>Le : <?= $blog['dateB'] ?> </p>
                     </div>
                     <h3 class=" text-lg font-semibold leading-6 text-white ">
                         <a href="#"><span class="absolute inset-0 "></span></a>
                         <?= $blog['titre'] ?>
                     </h3>
-                    <a href="jfjf" class="icon heart-icon h-16 w-16 text-red-600 fill-current">
+                    <a href="#" class="icon heart-icon h-16 w-16 text-red-600 fill-current">
                         <i class="fa-regular fa-heart text-3xl"></i>
                     </a>
-                    <a href="jfjf" class="icon comment-icon h-16 w-16 text-gray-600 fill-current">
+                    <a href="#" class="icon comment-icon h-16 w-16 text-gray-600 fill-current">
                         <i class="fa-solid fa-comments text-3xl"></i>
                     </a>
                     <a href="#" class="go-to-post-btn">
@@ -186,7 +189,16 @@
         </div>
     </div>
 </section>
+    <div id="messegeSupprimer" class="absolute hidden bottom-0 right-2 bg-green-200 px-6 py-4 mx-2 my-4 rounded-md text-lg flex items-center mx-auto  max-w-lg ease-in duration-300 ">
+            <svg viewBox="0 0 24 24" class="text-green-600 w-5 h-5 sm:w-5 sm:h-5 mr-3">
+                <path fill="currentColor"
+                    d="M12,0A12,12,0,1,0,24,12,12.014,12.014,0,0,0,12,0Zm6.927,8.2-6.845,9.289a1.011,1.011,0,0,1-1.43.188L5.764,13.769a1,1,0,1,1,1.25-1.562l4.076,3.261,6.227-8.451A1,1,0,1,1,18.927,8.2Z">
+                </path>
+            </svg>
+            <span class="text-green-800">Your account has been saved.</span>
+    </div>
 </div>
+<script src="../../script/supprimerBlog.js"></script>
 <script src="../../script/sendBlog.api.js"></script>
 <script src="../../script/scriptBlog.js"></script>
 <?php require './views/partials/bottom.php' ?>

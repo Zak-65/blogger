@@ -16,7 +16,7 @@
                     Profile
                 </h1>
                 <h2 class="text-grey text-sm mb-2 dark:text-gray-400">Create Profile</h2>
-                <form method="POST" onsubmit="verifierF(event)" action="." enctype="multipart/form-data">
+                <form method="POST" onsubmit="verifierF(event)" action="" enctype="multipart/form-data">
                     <!-- Cover Image -->
                     <div class="w-full rounded-sm mb-2 bg-[url('/views/assets/profile/covertureParDefaut.jpg')] bg-cover bg-center bg-no-repeat items-center">
                         <!-- Profile Image -->

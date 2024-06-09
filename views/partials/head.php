@@ -61,7 +61,16 @@
                 transform: scale(1);
             }
         }
+        .hide-scrollbar {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+        }
+
+        .hide-scrollbar::-webkit-scrollbar {
+        display: none;  /* Webkit Browsers */
+        }
+
     </style>
     <title>blogger</title>
 </head>
-<body class="dark:bg-gray-900 ">
+<body class="bg-[#F4F2EE] dark:bg-gray-900 ">
